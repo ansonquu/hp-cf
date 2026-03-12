@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/src/avay.png">
+    <title>友情链接</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            /* 背景图片可替换下方url */
+            background: url('https://bing.ee123.net/img/') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .main-content {
+            flex: 1 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255,255,255,0.98);
+            padding: 36px 28px 28px 28px;
+            border-radius: 20px;
+            box-shadow: 0 6px 32px #b0c4de33;
+            margin: 50px auto 50px auto;
+        }
+        h1 {
+            text-align: center;
+            letter-spacing: 2px;
+            color: #2d3a4b;
+            margin-bottom: 36px;
+            font-size: 2.1rem;
+            font-weight: 600;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px 25px;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+        .link-item {
+            background: linear-gradient(120deg, #f7fafd 60%, #eaf6ff 100%);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #e0eafc66;
+            display: flex;
+            align-items: flex-start;
+            min-width: 0;
+            max-width: 380px;
+            width: 100%;
+            min-height: 120px;
+            height: 120px;
+            padding: 20px 20px 20px 16px;
+            margin: 0 auto;
+            transition: box-shadow 0.2s, transform 0.1s;
+            cursor: pointer;
+            position: relative;
+            border: 1.5px solid #e3eafc;
+            box-sizing: border-box;
+        }
+        .link-item:hover {
+            box-shadow: 0 6px 24px #b0c4de55;
+            transform: translateY(-3px) scale(1.035);
+            border-color: #b3d8ff;
+        }
+        .avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+            border: 2px solid #e0eafc;
+            background: #fff;
+            box-shadow: 0 2px 8px #e0eafc33;
+        }
+        .link-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .link-title {
+            font-size: 21px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            word-break: break-all;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+        .link-title:hover {
+            text-decoration: none;
+        }
+        .desc {
+            color: #5a6a7b;
+            font-size: 15px;
+            margin-top: 0;
+            margin-bottom: 0;
+            word-break: break-all;
+            line-height: 1.7;
+            background: #f3f7fa;
+            border-radius: 6px;
+            padding: 7px 12px 7px 10px;
+            box-shadow: 0 1px 4px #e0eafc22;
+            max-height: 3.4em;
+            overflow-y: auto;
+        }
+        .apply-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 50px auto 0 auto;
+            padding: 0 22px;
+            height: 36px;
+            min-width: 100px;
+            max-width: 180px;
+            background: #3498db;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.18s;
+            font-weight: 400;
+            letter-spacing: 1px;
+            box-shadow: none;
+            text-decoration: none;
+        }
+        .apply-btn:hover {
+            background: #217dbb;
+        }
+        @media (max-width: 700px) {
+            body {
+                display: block;
+                align-items: unset;
+                justify-content: unset;
+            }
+            .main-content { 
+                display: block; 
+                padding-top: 20px; 
+                padding-bottom: 20px; 
+            }
+            .container { 
+                padding: 24px 16px 20px 16px; 
+                margin: 20px auto 20px auto; 
+                border-radius: 16px;
+                max-width: 92vw;
+            }
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 28px;
+                letter-spacing: 1.5px;
+            }
+            .links-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px 0; 
+            }
+            .link-item { 
+                max-width: 100%; 
+                min-height: 110px; 
+                height: 110px; 
+                padding: 16px 16px 16px 14px;
+                border-radius: 12px;
+            }
+            .avatar {
+                width: 48px;
+                height: 48px;
+                margin-right: 16px;
+            }
+            .link-title {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+            .desc {
+                font-size: 14px;
+                padding: 6px 10px 6px 8px;
+                border-radius: 8px;
+                max-height: 3.2em;
+            }
+            .apply-btn { 
+                width: 85%; 
+                min-width: 0; 
+                font-size: 15px; 
+                height: 40px; 
+                margin: 28px auto 0 auto; 
+                border-radius: 12px;
+                font-weight: 500;
+            }
+            .footer { 
+                font-size: 14px; 
+                margin: 20px auto 0 auto; 
+                margin-bottom: 16px; 
+                padding-top: 16px; 
+                padding-bottom: 0; 
+                letter-spacing: 1.2px; 
+                border-top: 1px solid #e3eafc; 
+                max-width: 92vw; 
+                border: none; 
+                background: rgba(245, 248, 252, 0.96); 
+                box-shadow: none; 
+                border-radius: 12px;
+                display: flex; 
+                justify-content: center; 
+                align-items: center; 
+            }
+            .footer-content { 
+                max-width: 92vw; 
+            }
+            .footer-placeholder { 
+                font-size: 13px; 
+                height: 42px; 
+                border-radius: 10px; 
+                margin-bottom: 16px; 
+                max-width: 92vw;
+            }
+        }
+        
+        /* 超小屏幕优化 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 12px 16px 12px;
+                margin: 16px auto 16px auto;
+                max-width: 94vw;
+            }
+            h1 {
+                font-size: 1.6rem;
+                margin-bottom: 24px;
+            }
+            .link-item {
+                min-height: 100px;
+                height: 100px;
+                padding: 14px 14px 14px 12px;
+            }
+            .avatar {
+                width: 44px;
+                height: 44px;
+                margin-right: 14px;
+            }
+            .link-title {
+                font-size: 16px;
+                margin-bottom: 6px;
+            }
+            .desc {
+                font-size: 13px;
+                padding: 5px 8px 5px 6px;
+            }
+            .apply-btn {
+                width: 88%;
+                height: 38px;
+                font-size: 14px;
+                margin: 24px auto 0 auto;
+            }
+            .footer {
+                font-size: 13px;
+                margin: 16px auto 0 auto;
+                margin-bottom: 12px;
+                padding-top: 14px;
+                max-width: 94vw;
+            }
+            .footer-content {
+                max-width: 94vw;
+            }
+            .footer-placeholder {
+                font-size: 12px;
+                height: 38px;
+                margin-bottom: 14px;
+                max-width: 94vw;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-content">
+<div class="container">
+    <h1>友情链接</h1>
+    <div class="links-grid" id="links-list">
+        <!-- 这里会自动填充友链 -->
+    </div>
+    <div id="empty-tip" style="text-align:center;color:#bbb;font-size:18px;display:none;margin-top:32px;">暂无友链，欢迎添加！</div>
+    <a href="https://gd.ansonqu.com/" class="apply-btn">申请友链</a>
+</div>
+</div>
+
+<script>
+fetch('links.json')
+    .then(res => res.json())
+    .then(links => {
+        const grid = document.getElementById('links-list');
+        const tip = document.getElementById('empty-tip');
+        grid.innerHTML = '';
+        if (!links.length) {
+            tip.style.display = '';
+            return;
+        }
+        tip.style.display = 'none';
+        links.forEach(link => {
+            const item = document.createElement('div');
+            item.className = 'link-item';
+            item.tabIndex = 0;
+            item.title = link.name || '';
+            item.onclick = () => {
+                if(link.url) window.open(link.url, '_blank');
+            };
+            item.onkeydown = e => {
+                if((e.key === 'Enter' || e.key === ' ') && link.url) window.open(link.url, '_blank');
+            };
+
+            // 头像
+            const avatar = document.createElement('img');
+            avatar.className = 'avatar';
+            avatar.src = link.avatar || '';
+            avatar.alt = '头像';
+            avatar.onerror = function(){this.style.display='none';};
+            item.appendChild(avatar);
+
+            // 信息
+            const info = document.createElement('div');
+            info.className = 'link-info';
+            const nameA = document.createElement('span');
+            nameA.className = 'link-title';
+            nameA.textContent = link.name || '';
+            info.appendChild(nameA);
+            if (link.desc) {
+                const desc = document.createElement('div');
+                desc.className = 'desc';
+                desc.textContent = link.desc;
+                info.appendChild(desc);
+            }
+            item.appendChild(info);
+            grid.appendChild(item);
+        });
+    })
+    .catch(() => {
+        document.getElementById('links-list').innerHTML = '';
+        document.getElementById('empty-tip').innerHTML = '加载失败';
+        document.getElementById('empty-tip').style.display = '';
+    });
+</script>
+</body>
+</html> 

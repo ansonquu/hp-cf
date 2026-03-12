@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="安心的个人主页 - 欢迎来到我的网站">
+    <meta name="keywords" content="安心, Anson, 个人主页, 博客">
+    <link rel="shortcut icon" href="/src/avay.png">
+    <title>安心の主页</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* 变量定义 */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --transition: all 0.3s ease;
+            --border-radius: 15px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --gradient-bg: linear-gradient(145deg, #f8f9fa, #ffffff);
+        }
+
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2em;
+        }
+
+        /* 头部样式 */
+        .header {
+            position: relative;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(234, 234, 234, 0.5);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5em 2em;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 2em;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5em 1em;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-options {
+            display: flex;
+            gap: 2em;
+        }
+
+        .separator {
+            color: #ccc;
+            margin: 0 0.5em;
+        }
+
+        /* 主要内容样式 */
+        .main {
+            margin-top: 3em;
+        }
+
+        /* 介绍部分 */
+        .intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4em;
+            gap: 3em;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .about-me {
+            flex: 1;
+        }
+
+        .greeting, .name {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 0.5em;
+            transition: var(--transition);
+        }
+
+        .greeting:hover, .name:hover {
+            color: var(--primary-color);
+        }
+
+        .welcome {
+            font-size: 1.3em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .profile-picture {
+            flex: 1;
+            text-align: right;
+        }
+
+        .profile-img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 1em;
+            font-style: italic;
+        }
+
+        /* 音乐部分 */
+        .music-section {
+            text-align: center;
+            padding: 2em;
+            margin: 4em auto;
+            max-width: 1200px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: var(--secondary-color);
+            margin-bottom: 1em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .music-player iframe {
+            margin: 0 auto;
+            display: block;
+            width: 100%;
+            height: 900px;
+            border: none;
+        }
+
+        /* 联系方式部分 */
+        .contact {
+            margin-top: 4em;
+            padding: 3em;
+            background: var(--gradient-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5em;
+            margin-left: 20%;
+        }
+
+        .contact-item {
+            font-size: 1.2em;
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            color: var(--primary-color);
+        }
+
+        .contact-label {
+            font-weight: 500;
+            margin-right: 0.5em;
+        }
+
+        .contact-link {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 3em 0 1em;
+            margin-top: 4em;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #333, transparent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 2em;
+            max-width: 1200px;
+            margin: 0 auto 2em;
+            padding: 0 2em;
+        }
+
+        .footer-section {
+            padding: 0;
+            margin-bottom: 1em;
+        }
+
+        .footer-logo {
+            text-align: left;
+            margin-bottom: 1.5em;
+        }
+
+        .logo-img {
+            height: 60px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-description {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+            line-height: 1.4;
+        }
+
+        .footer-title {
+            color: #ffffff;
+            margin-bottom: 1em;
+            font-size: 1.1em;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            background: #0070f3;
+            border-radius: 1px;
+        }
+
+        .subtitle {
+            font-weight: normal;
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 0.2em;
+            display: block;
+        }
+
+        .link-list {
+            list-style: none;
+            margin-top: 1em;
+        }
+
+        .footer-link {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 0.6em;
+            padding: 0.2em 0;
+            font-size: 0.9em;
+        }
+
+        .footer-link:hover {
+            color: #0070f3;
+            transform: translateX(3px);
+        }
+
+        .footer-text {
+            color: #ccc;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 0.6em;
+            padding: 0.2em 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5em;
+            border-top: 1px solid #333;
+            margin-top: 1.5em;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 2em;
+            padding-right: 2em;
+        }
+
+        .copyright {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 1em;
+        }
+
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5em;
+            margin-bottom: 1em;
+            flex-wrap: wrap;
+        }
+
+        .legal-link {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: var(--transition);
+        }
+
+        .legal-link:hover {
+            color: #0070f3;
+        }
+
+        .separator {
+            color: #333;
+        }
+
+        .beian-links {
+            margin-top: 1em;
+        }
+
+        .beian {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        .beian-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .beian a {
+            color: #999;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .beian a:hover {
+            color: #0070f3;
+        }
+
+        /* 翻译提示样式 */
+        .translation-note {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 0.5em;
+            opacity: 0.8;
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5em 1em;
+            }
+
+            .header .container {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.2em 1em;
+                gap: 1em;
+            }
+
+            .logo {
+                font-size: 1.6em;
+                margin-bottom: 0.5em;
+            }
+
+            .nav {
+                flex-direction: column;
+                width: 100%;
+                gap: 1.5em;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8em;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 0.8em 1em;
+                border-radius: 12px;
+                font-size: 1em;
+                background: rgba(74, 144, 226, 0.05);
+                border: 1px solid rgba(74, 144, 226, 0.1);
+            }
+
+            .nav-link:hover {
+                background-color: var(--primary-color);
+                color: white;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+            }
+
+            .nav-options {
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+                gap: 1em;
+            }
+
+            .language-switcher {
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+            }
+
+            .separator {
+                color: #ccc;
+                margin: 0 0.3em;
+            }
+
+            .main {
+                margin-top: 2em;
+            }
+
+            .intro {
+                flex-direction: column;
+                text-align: center;
+                gap: 2em;
+                margin-bottom: 3em;
+            }
+
+            .about-me {
+                order: 1;
+            }
+
+            .profile-picture {
+                order: 2;
+                text-align: center;
+            }
+
+            .greeting, .name {
+                font-size: 2em;
+                margin-bottom: 0.4em;
+            }
+
+            .welcome {
+                font-size: 1.2em;
+                line-height: 1.6;
+            }
+            
+            .translation-note {
+                font-size: 0.85em;
+                margin-top: 0.4em;
+            }
+
+            .profile-img {
+                max-width: 90%;
+                border-radius: 16px;
+            }
+
+            .profile-description {
+                font-size: 0.95em;
+                margin-top: 1.2em;
+            }
+
+            .contact-details {
+                margin-left: 0;
+                align-items: center;
+                text-align: center;
+                gap: 1.2em;
+            }
+
+            .contact-item {
+                font-size: 1.1em;
+                padding: 0.8em 1.2em;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                transition: var(--transition);
+            }
+
+            .contact-item:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+                background: rgba(255, 255, 255, 0.95);
+            }
+
+            .music-section {
+                padding: 1.5em 1em;
+                margin: 2.5em auto;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+                margin-bottom: 1em;
+            }
+
+            .music-player iframe {
+                height: 80vw;
+                max-height: 400px;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            }
+
+            .contact {
+                margin-top: 3em;
+                padding: 2em 1.5em;
+                border-radius: 16px;
+            }
+
+            .footer {
+                padding: 2.5em 0 1.5em 0;
+                margin-top: 2.5em;
+                border-radius: 16px 16px 0 0;
+                box-shadow: 0 -2px 16px rgba(0,0,0,0.06);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5em;
+                text-align: center;
+                padding: 0 1.2em;
+            }
+
+            .footer-section {
+                padding: 0;
+                margin-bottom: 0.8em;
+                min-width: auto;
+            }
+
+            .footer-title {
+                font-size: 1.1em;
+                margin-bottom: 0.8em;
+                position: relative;
+                color: #ffffff;
+            }
+
+            .footer-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 20px;
+                height: 2px;
+                background: #0070f3;
+                border-radius: 1px;
+            }
+
+            .logo-img {
+                height: 60px;
+                margin-bottom: 0.5em;
+                transition: transform 0.2s ease;
+            }
+            
+            .logo-img:hover {
+                transform: scale(1.02);
+            }
+
+            .link-list {
+                margin-top: 0.8em;
+            }
+
+            .footer-link {
+                padding: 0.4em 0;
+                margin-bottom: 0.4em;
+                font-size: 0.9em;
+                color: #ccc;
+            }
+
+            .footer-link:hover {
+                color: #0070f3;
+                transform: none;
+            }
+
+            .footer-bottom {
+                padding-top: 1.2em;
+                margin-top: 1.2em;
+                border-top: 1px solid #333;
+            }
+
+            .copyright {
+                font-size: 0.85em;
+                margin-bottom: 1em;
+                color: #999;
+            }
+
+            .legal-links {
+                flex-direction: column;
+                gap: 0.6em;
+                margin-bottom: 1em;
+            }
+
+            .legal-link {
+                font-size: 0.85em;
+                color: #999;
+            }
+            
+            .legal-link:hover {
+                color: #0070f3;
+            }
+            
+            .beian-links {
+                flex-direction: column;
+                gap: 0.8em;
+            }
+
+            .beian {
+                font-size: 0.85em;
+                justify-content: center;
+                color: #999;
+            }
+            
+            .beian a {
+                color: #999;
+            }
+            
+            .beian a:hover {
+                color: #0070f3;
+            }
+
+            .footer-description {
+                font-size: 0.85em;
+                margin-top: 0.3em;
+                text-align: center;
+            }
+
+            .footer-text {
+                font-size: 0.85em;
+                text-align: center;
+            }
+        }
+
+        /* 超小屏幕优化 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.2em 0.8em;
+            }
+
+            .header .container {
+                padding: 1em 0.8em;
+            }
+
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .nav-link {
+                padding: 0.7em 0.8em;
+                font-size: 0.95em;
+            }
+
+            .greeting, .name {
+                font-size: 1.8em;
+            }
+
+            .welcome {
+                font-size: 1.1em;
+            }
+            
+            .translation-note {
+                font-size: 0.8em;
+                margin-top: 0.3em;
+            }
+
+            .profile-img {
+                max-width: 95%;
+            }
+
+            .section-title {
+                font-size: 1.6em;
+            }
+
+            .music-player iframe {
+                height: 85vw;
+                max-height: 350px;
+            }
+
+            .contact {
+                padding: 1.5em 1em;
+            }
+
+            .contact-item {
+                font-size: 1em;
+                padding: 0.7em 1em;
+            }
+
+            .footer {
+                padding: 2em 0 1em 0;
+                margin-top: 2em;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.2em;
+                padding: 0 1em;
+            }
+
+            .logo-img {
+                height: 50px;
+            }
+
+            .footer-title {
+                font-size: 1em;
+                margin-bottom: 0.6em;
+                color: #ffffff;
+            }
+
+            .footer-link {
+                font-size: 0.85em;
+                padding: 0.3em 0;
+                margin-bottom: 0.3em;
+                color: #ccc;
+            }
+
+            .footer-bottom {
+                padding-top: 1em;
+                margin-top: 1em;
+                border-top: 1px solid #333;
+            }
+
+            .copyright {
+                font-size: 0.85em;
+                margin-bottom: 0.8em;
+            }
+
+            .legal-link {
+                font-size: 0.8em;
+                padding: 0.3em 0.6em;
+            }
+            
+            .beian {
+                font-size: 0.85em;
+            }
+        }
+
+        /* 横屏模式优化 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .header .container {
+                flex-direction: row;
+                align-items: center;
+                padding: 1em 1.5em;
+            }
+
+            .nav {
+                flex-direction: row;
+                gap: 1em;
+            }
+
+            .nav-buttons {
+                flex-direction: row;
+                gap: 0.5em;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                width: auto;
+                padding: 0.5em 0.8em;
+                font-size: 0.9em;
+            }
+
+            .intro {
+                flex-direction: row;
+                text-align: left;
+                gap: 2em;
+            }
+
+            .about-me {
+                order: 1;
+                flex: 1;
+            }
+
+            .profile-picture {
+                order: 2;
+                flex: 1;
+                text-align: right;
+            }
+
+            .greeting, .name {
+                font-size: 1.8em;
+            }
+
+            .welcome {
+                font-size: 1.1em;
+            }
+
+            .profile-img {
+                max-width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Anson</h1>
+            <nav class="nav">
+                <div class="nav-buttons">
+                    <a href="https://blog.ansonq.com" class="nav-link">博客</a>
+                    <a href="https://bg4jhp.com/" class="nav-link">BG4JHP</a>
+                    <a href="https://status.ansonq.com" class="nav-link">我的网站状态</a>
+                    <a href="https://gd.anson.fun/" class="nav-link">工单</a>
+                    <a href="/links" class="nav-link">友情链接</a>
+                </div>
+                <div class="nav-options">
+                    <div class="language-switcher">
+                        <a href="" class="nav-link">中文</a>
+                        <span class="separator">|</span>
+                        <a href="/hp/en" class="nav-link">English</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="intro" id="about">
+                <div class="about-me">
+                    <h2 class="greeting">早上好/中午好/晚上好</h2>
+                    <h2 class="name">这里Anson</h2>
+                    <p class="welcome">欢迎来到我的网站</p>
+                </div>
+                <!--<div class="profile-picture">
+                    <img src="/src/dali.jpg" alt="2022年摄于中国云南" class="profile-img">
+                    <p class="profile-description">2022年摄于中国云南</p>
+                </div>-->
+                <div class="profile-picture">
+                    <img src="/src/dali.jpg" alt="2022年摄于中国云南" class="profile-img">
+                    <p class="profile-description">2022年摄于中国云南</p>
+                </div>
+            </section>
+
+            <section class="music-section">
+                <h2 class="section-title">我喜欢的音乐</h2>
+                <br>
+                <!--<iframe 
+                    allow="autoplay *; encrypted-media *;" 
+                    frameborder="0" 
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                    src="https://embed.music.apple.com/cn/playlist/my-favorate-songs/pl.u-BNA6YV3teZLoMxl?l=en">
+                </iframe>-->
+                <iframe allow="autoplay *; encrypted-media *;" 
+                    frameborder="0" 
+                    height="450" 
+                    style="width:100%;max-width:660px;overflow:hidden;background:transparent;" 
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                    src="https://embed.music.apple.com/cn/playlist/favorite-songs/pl.u-EgUDj0K4gB">
+                </iframe>
+            </section>
+
+            <section class="contact" id="contact">
+                <h2 class="section-title">联系方式</h2>
+                <div class="contact-details">
+                    <p class="contact-item">
+                        <span class="contact-label">微信:</span>
+                        <span class="contact-value">ansonquu</span>
+                    </p>
+                    <p class="contact-item">
+                        <span class="contact-label">邮箱:</span>
+                        <a href="mailto:i@ansonq.com" class="contact-value">i@ansonq.com</a>
+                    </p>
+                    <p class="contact-item">
+                        <a href="http://weixin.qq.com/r/mp/FxJXTyrEvHfDrW4s90cF" 
+                           target="_blank" 
+                           class="contact-link">
+                            微信公众号：安心Anson
+                        </a>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="/src/tx.png" alt="Logo" class="logo-img">
+                        <p class="footer-description">
+                            分享我的思考，我的想法，我的生活
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">我的网站<br><span class="subtitle">My sites</span></h3>
+                    <ul class="link-list">
+                        <li><a href="/" class="footer-link">主页 / Homepage</a></li>
+                        <li><a href="https://blog.ansonq.com" class="footer-link">博客 / Blog</a></li>
+                        <li><a href="https://gd.ansonqu.com" class="footer-link">工单 / Tickets</a></li>
+                        <li><a href="/links" class="footer-link">友情链接</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">BG4JHP<br><span class="subtitle">BG4JHP</span></h3>
+                    <ul class="link-list">
+                        <li><a href="https://bg4jhp.com" class="footer-link">主页 / Homepage</a></li>
+                        <li><a href="https://blog.bg4jhp.com" class="footer-link">博客 / Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">联系方式<br><span class="subtitle">Contacts</span></h3>
+                    <ul class="link-list">
+                        <li><a href="mailto:i@ansonq.com" class="footer-link">i@ansonq.com</a></li>
+                        <li><span class="footer-text">微信: ansonquu</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="beian-links">
+                    <p class="beian">
+                        <img src="/src/avay.png" alt="安授" class="beian-icon">
+                        <a href="https://vf.386699.xyz/?id=002" rel="noreferrer" target="_blank">安授002号</a>
+                    </p>
+                </div>
+                <p class="copyright">Copyright © 2024-2025 Anson. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="/privacy-policy" class="legal-link">隐私政策</a>
+                    <span class="separator">|</span>
+                    <a href="/terms-of-use" class="legal-link">使用条款</a>
+                    <span class="separator">|</span>
+                    <a href="/links" class="legal-link">友情链接</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

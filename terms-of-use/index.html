@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务条款</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .section h3 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #e74c3c;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 16px 12px;
+                padding: 20px 16px;
+                border-radius: 12px;
+            }
+            
+            .header {
+                margin-bottom: 32px;
+                padding-bottom: 16px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+                margin-bottom: 8px;
+            }
+            
+            .header p {
+                font-size: 1em;
+            }
+            
+            .section {
+                margin-bottom: 24px;
+            }
+            
+            .section h2 {
+                font-size: 1.4em;
+                margin-bottom: 12px;
+                padding-bottom: 4px;
+            }
+            
+            .section h3 {
+                font-size: 1.1em;
+                margin: 16px 0 8px 0;
+            }
+            
+            .section p {
+                margin-bottom: 12px;
+                font-size: 0.95em;
+                line-height: 1.7;
+            }
+            
+            .section ul {
+                margin-left: 16px;
+                margin-bottom: 12px;
+            }
+            
+            .section li {
+                margin-bottom: 6px;
+                font-size: 0.95em;
+            }
+            
+            .highlight {
+                padding: 12px;
+                margin: 16px 0;
+                border-radius: 8px;
+            }
+            
+            .warning {
+                padding: 12px;
+                margin: 16px 0;
+                border-radius: 8px;
+            }
+            
+            .contact-info {
+                padding: 16px;
+                border-radius: 8px;
+                margin-top: 24px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+            
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                border-radius: 8px;
+            }
+            
+            .table {
+                font-size: 0.9em;
+            }
+            
+            .table th,
+            .table td {
+                padding: 8px 6px;
+            }
+        }
+        
+        /* 超小屏幕优化 */
+        @media (max-width: 480px) {
+            .container {
+                margin: 12px 8px;
+                padding: 16px 12px;
+            }
+            
+            .header h1 {
+                font-size: 1.9em;
+            }
+            
+            .header p {
+                font-size: 0.95em;
+            }
+            
+            .section h2 {
+                font-size: 1.3em;
+            }
+            
+            .section h3 {
+                font-size: 1em;
+            }
+            
+            .section p {
+                font-size: 0.9em;
+            }
+            
+            .section li {
+                font-size: 0.9em;
+            }
+            
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 0.85em;
+            }
+            
+            .table {
+                font-size: 0.85em;
+            }
+            
+            .table th,
+            .table td {
+                padding: 6px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-links">
+            <a href="/privacy-policy">隐私政策</a>
+            <a href="#">服务条款</a>
+        </div>
+
+        <div class="header">
+            <h1>服务条款</h1>
+            <p>最后更新日期：2024年1月1日</p>
+        </div>
+
+        <div class="section">
+            <h2>1. 服务说明</h2>
+            <p>我们提供以下服务（以下简称"服务"）：</p>
+            <ul>
+                <li>在线平台访问和使用</li>
+                <li>用户账户管理</li>
+                <li>技术支持服务</li>
+                <li>客户服务支持</li>
+                <li>其他相关服务</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. 账户注册和使用</h2>
+            <h3>2.1 注册要求</h3>
+            <p>要使用我们的服务，您必须：</p>
+            <ul>
+                <li>年满18岁或获得法定监护人同意</li>
+                <li>提供真实、准确、完整的注册信息</li>
+                <li>保护您的账户安全，不得与他人共享账户</li>
+                <li>及时更新您的联系信息</li>
+            </ul>
+
+            <h3>2.2 账户责任</h3>
+            <p>您对以下行为负责：</p>
+            <ul>
+                <li>您账户下的所有活动</li>
+                <li>维护账户信息的机密性</li>
+                <li>及时通知我们任何未经授权的使用</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. 可接受使用政策</h2>
+            <p>您同意不会使用我们的服务进行以下活动：</p>
+            <ul>
+                <li>任何非法活动或违反法律法规的行为</li>
+                <li>侵犯他人知识产权或其他权利</li>
+                <li>传播恶意软件、病毒或其他有害代码</li>
+                <li>干扰或破坏服务正常运行</li>
+                <li>发送垃圾邮件或未经请求的商业信息</li>
+                <li>冒充他人或提供虚假信息</li>
+                <li>收集其他用户的个人信息</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. 知识产权</h2>
+            <h3>4.1 我们的权利</h3>
+            <p>我们的服务及其内容（包括但不限于文本、图像、软件、设计等）受知识产权法保护。未经我们明确许可，您不得复制、分发、修改或创建衍生作品。</p>
+
+            <h3>4.2 您的内容</h3>
+            <p>您保留对您上传或提交到我们服务的内容的所有权。通过提交内容，您授予我们非独占、免版税的许可，允许我们使用、复制、分发和展示该内容。</p>
+        </div>
+
+        <div class="section">
+            <h2>5. 服务可用性和维护</h2>
+            <p>我们努力保持服务的高可用性，但以下情况可能导致服务中断：</p>
+            <ul>
+                <li>计划维护和更新</li>
+                <li>技术故障或系统错误</li>
+                <li>网络连接问题</li>
+                <li>不可抗力事件</li>
+            </ul>
+            <p>我们将尽力提前通知计划维护，但紧急维护可能无法提前通知。</p>
+        </div>
+
+        <div class="section">
+            <h2>6. 费用和支付</h2>
+            <h3>6.1 费用结构</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>服务类型</th>
+                        <th>费用</th>
+                        <th>计费周期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>基础服务</td>
+                        <td>免费</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>6.2 支付条款</h3>
+            <ul>
+                <li>所有费用均以人民币计价</li>
+                <li>费用将在服务开始前收取</li>
+                <li>逾期付款可能导致服务暂停</li>
+                <li>退款政策请参考第8条</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. 免责声明</h2>
+            <div class="warning">
+                <h3>重要免责声明</h3>
+                <p>我们的服务按"现状"提供，不提供任何明示或暗示的保证。我们不保证：</p>
+                <ul>
+                    <li>服务将无中断或错误</li>
+                    <li>服务将满足您的特定需求</li>
+                    <li>服务将及时、安全或无病毒</li>
+                    <li>任何错误将被纠正</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>8. 退款政策</h2>
+            <p>我们的退款政策如下：</p>
+            <ul>
+                <li>服务开始后7天内可申请全额退款</li>
+                <li>7天后不予退款</li>
+                <li>因违反服务条款导致的账户终止不予退款</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. 责任限制</h2>
+            <p>在法律允许的最大范围内，我们对以下情况不承担责任：</p>
+            <ul>
+                <li>间接损失、附带损失或特殊损失</li>
+                <li>数据丢失或损坏</li>
+                <li>业务中断损失</li>
+                <li>第三方行为造成的损失</li>
+            </ul>
+            <p>我们的总责任不超过您在过去12个月内支付给我们的费用总额。</p>
+        </div>
+
+        <div class="section">
+            <h2>10. 服务终止</h2>
+            <h3>10.1 您终止服务</h3>
+            <p>您可以随时通过以下方式终止服务：</p>
+            <ul>
+                <li>在账户设置中取消订阅</li>
+                <li>联系客户服务</li>
+                <li>删除您的账户</li>
+            </ul>
+
+            <h3>10.2 我们终止服务</h3>
+            <p>我们可能在以下情况下终止您的服务：</p>
+            <ul>
+                <li>违反服务条款</li>
+                <li>逾期付款</li>
+                <li>欺诈或滥用行为</li>
+                <li>法律要求</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. 争议解决</h2>
+            <p>任何因本服务条款引起的争议，双方应首先通过友好协商解决。协商不成的，应提交至有管辖权的人民法院解决。</p>
+        </div>
+
+        <div class="section">
+            <h2>12. 条款修改</h2>
+            <p>我们保留随时修改本服务条款的权利。重大变更将通过以下方式通知您：</p>
+            <ul>
+                <li>电子邮件通知</li>
+                <li>网站公告</li>
+                <li>应用内通知</li>
+            </ul>
+            <p>继续使用服务即表示您接受修改后的条款。</p>
+        </div>
+
+        <div class="highlight">
+            <h3>重要提醒</h3>
+            <p>通过使用我们的服务，您确认已阅读、理解并同意遵守本服务条款的所有条款。如果您不同意任何条款，请不要使用我们的服务。</p>
+        </div>
+
+        <div class="contact-info">
+            <h3>联系我们</h3>
+            <p>如果您对本服务条款有任何疑问，请通过以下方式联系我们：</p>
+            <p><strong>电子邮件：</strong>service@ansonqu.com</p>
+            <p><strong>电话：</strong> +86 158 6400 5786</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Anson Qu 保留所有权利.</p>
+        </div>
+    </div>
+</body>
+</html> 

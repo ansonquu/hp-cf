@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect Confirm</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 400px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      word-wrap: break-word; /* 允许长单词或 URL 换行 */
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button.confirm {
+      background-color: #007bff;
+      color: white;
+    }
+
+    button.cancel {
+      background-color: #ccc;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 id="title">About to go to external website</h2>
+    <p>You are trying to visit:</p>
+    <p><a id="targetLink" href="#"></a></p>
+    <p id="warning">Please pay attention, the link will makes you leave current website.</p>
+    <button id="confirmButton" class="confirm">Confirm</button>
+    <button id="cancelButton" class="cancel">Cancel</button>
+  </div>
+  <script>
+    // 获取当前页面的 URL 参数（这里假设你要传递的跳转目标网址作为参数）
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetUrl = urlParams.get('to');
+
+    const targetLink = document.getElementById('targetLink');
+    const confirmButton = document.getElementById('confirmButton');
+    const cancelButton = document.getElementById('cancelButton');
+    const title = document.getElementById('title');
+    const warning = document.getElementById('warning');
+
+    if (targetUrl) {
+      targetLink.href = targetUrl;
+      targetLink.textContent = targetUrl;
+
+      try {
+        const url = new URL(targetUrl);
+        const rootDomain = url.hostname.split('.').slice(-2).join('.');
+        if (rootDomain === 'feishu.cn' || rootDomain === 'larksuite.com') {
+          title.textContent = 'About to go to Lark';
+          warning.textContent = 'Please be aware, this link will redirect you to Lark.';
+        }
+      } catch (error) {
+        console.error('解析 URL 时出错:', error);
+      }
+    } else {
+      alert('未获取到有效的跳转目标网址');
+    }
+
+    confirmButton.addEventListener('click', function () {
+      window.open(targetUrl);
+    });
+
+    cancelButton.addEventListener('click', function () {
+      // 取消跳转，这里可以添加一些取消后的操作，比如停留在当前页面
+      console.log('用户取消了跳转');
+    });
+  </script>
+</body>
+
+</html>

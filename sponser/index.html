@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>赞助我 | Support Me</title>
+    <meta name="description" content="如果你喜欢这个项目或我的内容，欢迎通过微信、支付宝或 PayPal 赞助我。" />
+    <meta property="og:title" content="赞助我" />
+    <meta property="og:description" content="如果你喜欢这个项目或我的内容，欢迎通过微信、支付宝或 PayPal 赞助我。" />
+    <meta property="og:type" content="website" />
+    <link rel="shortcut icon" href="/src/avay.png">
+    <meta name="color-scheme" content="light dark" />
+    <style>
+      :root {
+        --bg: #0b1220;
+        --card: #0f172a;
+        --muted: #94a3b8;
+        --text: #e2e8f0;
+        --brand: #22c55e;
+        --brand-2: #0ea5e9;
+        --border: rgba(148, 163, 184, 0.2);
+        --shadow: 0 10px 30px rgba(2, 6, 23, 0.45);
+        --card-glass-bg: rgba(15, 23, 42, 0.55);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f6f7fb;
+          --card: #ffffff;
+          --muted: #64748b;
+          --text: #0f172a;
+          --brand: #16a34a;
+          --brand-2: #0284c7;
+          --border: rgba(100, 116, 139, 0.15);
+          --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+          --card-glass-bg: rgba(255, 255, 255, 0.6);
+        }
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, "Helvetica Neue", Arial, "Noto Sans CJK SC", sans-serif;
+        color: var(--text);
+        background: transparent;
+      }
+      .container {
+        max-width: 980px;
+        padding: 28px 20px 60px;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .bg-img {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        pointer-events: none;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+      .avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(148,163,184,.25);
+        box-shadow: 0 6px 18px rgba(2,6,23,.18);
+      }
+      .title {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        margin: 10px 0 6px;
+      }
+      .subtitle {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 720px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        justify-items: center;
+      }
+      @media (max-width: 900px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+      .info-card {
+        background: var(--card-glass-bg);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px) saturate(130%);
+        -webkit-backdrop-filter: blur(12px) saturate(130%);
+        padding: 18px;
+        max-width: 680px;
+        margin: 0 auto 18px;
+      }
+      .card {
+        background: var(--card-glass-bg);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px) saturate(130%);
+        -webkit-backdrop-filter: blur(12px) saturate(130%);
+        overflow: hidden;
+      }
+      .card:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(2,6,23,.35); }
+      .card .section {
+        padding: 18px 18px 16px;
+        border-bottom: 1px dashed var(--border);
+      }
+      .card .section:last-child { border-bottom: 0; }
+      .section h3 {
+        font-size: 15px;
+        margin: 0 0 10px;
+      }
+      /* 已移除金额选择与选项卡相关样式 */
+      .qr-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 520px) { .qr-wrap { grid-template-columns: 1fr; } }
+      .qr {
+        border: 1px dashed var(--border);
+        border-radius: 12px;
+        padding: 14px;
+        text-align: center;
+      }
+      .qr h4 { margin: 0 0 8px; font-size: 14px; }
+      .qr .img {
+        height: 220px;
+        border-radius: 8px;
+        background: repeating-linear-gradient(45deg, rgba(148,163,184,.15) 0, rgba(148,163,184,.15) 10px, transparent 10px, transparent 20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+      .copy {
+        border: 1px solid var(--border);
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        color: var(--muted);
+        background: rgba(148,163,184,.06);
+      }
+      .btn {
+        appearance: none;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        color: white;
+        box-shadow: 0 8px 20px rgba(2,6,23,.2);
+        transition: transform .06s ease, filter .2s ease;
+      }
+      .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+      .btn.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); box-shadow: none; }
+      .note {
+        font-size: 13px; color: var(--muted); line-height: 1.6;
+      }
+      footer { text-align: center; margin-top: 32px; color: var(--muted); font-size: 12px; }
+      .supporters { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+      .chip { border: 1px solid var(--border); background: rgba(148,163,184,.06); padding: 8px 10px; border-radius: 999px; font-size: 13px; text-align: center; }
+      .list { margin: 0; padding-left: 18px; color: var(--muted); }
+      .list li { margin: 6px 0; }
+      .divider { height: 1px; background: var(--border); margin: 10px 0; }
+    </style>
+  </head>
+  <body>
+    <img class="bg-img" src="https://bing.ee123.net/img/" alt="背景占位图" />
+    <div class="container">
+      <header class="info-card">
+        <img class="avatar" src="/src/tx.png" alt="头像" />
+        <h1 class="title">Anson</h1>
+        <p class="subtitle">欢迎来到我的赞助页面。感谢你的支持，让创作更持久</p>
+      </header>
+
+      <div class="grid">
+        <div class="card">
+          <div class="section">
+            <h3>扫码赞助</h3>
+            <div class="qr-wrap" style="margin-top:10px;">
+              <div class="qr">
+                <h4>微信支付</h4>
+                <img src="/src/wechatpay.png" alt="微信赞助二维码" style="height:320px;border-radius:10px" loading="lazy" />
+              </div>
+              <div class="qr">
+                <h4>支付宝</h4>
+                <img src="/src/alipay.jpg" alt="支付宝赞助二维码" style="height:320px;border-radius:10px" loading="lazy" />
+              </div>
+            </div>
+            <p class="note" style="margin-top:10px">手机版可以截图到对应软件扫码</p>
+            <div style="text-align:center;margin-top:12px;">
+              <a class="btn" href="https://paypal.me/ansonquu" target="_blank" rel="noopener noreferrer">PayPal 赞助</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>© <span id="year"></span> Anson 保留所有权利</div>
+      </footer>
+    </div>
+
+    <!-- 将下方占位框替换为你的二维码图片：
+      方式一：把二维码图片放到本目录或 /assets 下，然后把 .img 替换为 <img src="./weixin.png" alt="微信赞助二维码" style="height:220px;border-radius:8px" />
+      方式二：保留占位框，线下转账或复制账号搜索
+    -->
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>
+
+

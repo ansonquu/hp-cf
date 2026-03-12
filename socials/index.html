@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/src/avay.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>我的社交媒体链接</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* 背景图片设置 - 取消注释并修改路径来使用背景图片 */
+            background-image: url('https://bing.ee123.net/img/');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .language-switch:hover {
+            background: rgba(255, 255, 255, 1);
+            color: #333;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile {
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .bio {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+            cursor: pointer;
+        }
+
+        .social-link.wechat:hover {
+            cursor: pointer;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .social-icon i {
+            font-size: 20px;
+            color: inherit;
+        }
+
+        .social-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .social-name {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .social-handle {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .arrow {
+            color: #999;
+            font-size: 18px;
+        }
+
+        /* 社交媒体平台特定颜色 */
+        .wechat { border-left: 4px solid #07c160; }
+        .wechat:hover { background: #f0f9ff; }
+
+        .qq { border-left: 4px solid #12b7f5; }
+        .qq:hover { background: #f0f9ff; }
+
+        .douyin { border-left: 4px solid #000000; }
+        .douyin:hover { background: #f8f9fa; }
+
+        .xiaohongshu { border-left: 4px solid #fe2c55; }
+        .xiaohongshu:hover { background: #fef2f2; }
+
+        .bilibili { border-left: 4px solid #00a1d6; }
+        .bilibili:hover { background: #f0f9ff; }
+
+        .github { border-left: 4px solid #333333; }
+        .github:hover { background: #f8f9fa; }
+
+        .twitter { border-left: 4px solid #1da1f2; }
+        .twitter:hover { background: #f0f9ff; }
+
+        .instagram { border-left: 4px solid #e4405f; }
+        .instagram:hover { background: #fef2f2; }
+
+        .youtube { border-left: 4px solid #ff0000; }
+        .youtube:hover { background: #fef2f2; }
+
+        /* 二维码模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: -20px;
+            margin-right: -10px;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            border: 2px dashed #ddd;
+        }
+
+        .qr-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .qr-desc {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .social-links {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                max-width: 100%;
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .name {
+                font-size: 24px;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                padding: 20px;
+                width: 95%;
+            }
+
+            .qr-code {
+                width: 150px;
+                height: 150px;
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/socials/en/" class="language-switch">English</a>
+        <div class="profile">
+            <div class="avatar">
+                <img src="/src/tx.png" alt="头像" id="avatar-img">
+            </div>
+            <h1 class="name">Anson</h1>
+            <p class="bio">欢迎来到我的社交媒体链接页面！在这里您可以找到我在各个平台上的联系方式。</p>
+        </div>
+
+        <div class="social-links">
+            <!-- 微信 -->
+            <div class="social-link wechat" onclick="showQRCode('wechat')">
+                <div class="social-icon"><i class="fab fa-weixin"></i></div>
+                <div class="social-text">
+                    <div class="social-name">微信</div>
+                    <div class="social-handle">点击查看二维码</div>
+                </div>
+                <div class="arrow"><i class="fas fa-eye"></i></div>
+            </div>
+
+            <!-- QQ -->
+            <a href="https://qm.qq.com/q/AlcN3g0CSQ" target="_blank" class="social-link qq">
+                <div class="social-icon"><i class="fab fa-qq"></i></div>
+                <div class="social-text">
+                    <div class="social-name">QQ</div>
+                    <div class="social-handle">ansonqu</div>
+                </div>
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- 抖音 -->
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAgFkAP-nTIrqj7RWxEuNCbxrKqpXquoRKBXlOXQNaP2s" target="_blank" class="social-link douyin">
+                <div class="social-icon"><i class="fab fa-tiktok"></i></div>
+                <div class="social-text">
+                    <div class="social-name">抖音</div>
+                    <div class="social-handle">@人として</div>
+                </div>
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- 小红书 -->
+            <a href="https://www.xiaohongshu.com/user/profile/65d9764800000000050312ce" target="_blank" class="social-link xiaohongshu">
+                <div class="social-icon"><i class="fa-solid fa-book-open"></i></div>
+                <div class="social-text">
+                    <div class="social-name">小红书</div>
+                    <div class="social-handle">@人として</div>
+                </div>
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- B站 -->
+            <a href="https://space.bilibili.com/1468582841" target="_blank" class="social-link bilibili">
+                <div class="social-icon"><i class="fa-brands fa-bilibili"></i></div>
+                <div class="social-text">
+                    <div class="social-name">哔哩哔哩</div>
+                    <div class="social-handle">@ansonquu</div>
+                </div>
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/ansonquu" target="_blank" class="social-link github">
+                <div class="social-icon"><i class="fab fa-github"></i></div>
+                <div class="social-text">
+                    <div class="social-name">GitHub</div>
+                    <div class="social-handle">@ansonquu</div>
+                </div>
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Twitter -->
+            <a href="https://x.com/ansonquu" target="_blank" class="social-link twitter">
+                <div class="social-icon"><i class="fab fa-x-twitter"></i></div>
+                <div class="social-text">
+                    <div class="social-name">Twitter</div>
+                    <div class="social-handle">@ansonquu</div>
+                </div>
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/ansonquu/" target="_blank" class="social-link instagram">
+                <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                <div class="social-text">
+                    <div class="social-name">Instagram</div>
+                    <div class="social-handle">@ansonquu</div>
+                </div>
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@ansonquu" target="_blank" class="social-link youtube">
+                <div class="social-icon"><i class="fab fa-youtube"></i></div>
+                <div class="social-text">
+                    <div class="social-name">YouTube</div>
+                    <div class="social-handle">@ansonquu</div>
+                </div>
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 二维码模态框 -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="qr-title" id="qrTitle">微信二维码</div>
+            <div class="qr-desc" id="qrDesc">扫描二维码添加好友</div>
+            <div class="qr-code" id="qrCode">
+                <i class="fab fa-weixin" style="font-size: 48px; color: #07c160;"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showQRCode(type) {
+            const modal = document.getElementById('qrModal');
+            const title = document.getElementById('qrTitle');
+            const desc = document.getElementById('qrDesc');
+            const qrCode = document.getElementById('qrCode');
+            
+            if (type === 'wechat') {
+                title.textContent = '微信二维码';
+                desc.textContent = '扫描二维码添加微信好友';
+                // 将下面的图片路径替换为您的微信二维码图片
+                qrCode.innerHTML = '<img src="/src/wx.jpg" alt="微信二维码" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">';
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('qrModal');
+            modal.style.display = 'none';
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('qrModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('qrModal');
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
