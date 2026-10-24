@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/src/avay.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
     <title>我的社交媒体链接</title>
     <style>
         * {
@@ -17,7 +17,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             /* 背景图片设置 - 取消注释并修改路径来使用背景图片 */
-            background-image: url('https://bing.ee123.net/img/');
+            background-image: url('/src/bg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -303,13 +303,14 @@
             }
         }
     </style>
+<link rel="stylesheet" href="/assets/dark.css">
 </head>
 <body>
     <div class="container">
         <a href="/socials/en/" class="language-switch">English</a>
         <div class="profile">
             <div class="avatar">
-                <img src="/src/tx.png" alt="头像" id="avatar-img">
+                <img src="/src/tx.webp" alt="头像" id="avatar-img">
             </div>
             <h1 class="name">Anson</h1>
             <p class="bio">欢迎来到我的社交媒体链接页面！在这里您可以找到我在各个平台上的联系方式。</p>
@@ -431,7 +432,7 @@
                 title.textContent = '微信二维码';
                 desc.textContent = '扫描二维码添加微信好友';
                 // 将下面的图片路径替换为您的微信二维码图片
-                qrCode.innerHTML = '<img src="/src/wx.jpg" alt="微信二维码" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">';
+                qrCode.innerHTML = '<img src="/src/wx.webp" alt="微信二维码" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">';
             }
             
             modal.style.display = 'block';

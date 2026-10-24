@@ -1,270 +1,370 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Anson's Personal Website - Welcome to my site">
-    <meta name="keywords" content="Anson, Personal Website, Blog">
+    <meta name="description" content="Anson's personal homepage - Welcome to my website">
+    <meta name="keywords" content="Anson, personal homepage, blog">
     <link rel="shortcut icon" href="/src/avay.png">
-    <title>Anson Site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Anson's Homepage</title>
+    <link href="/assets/fonts/roboto.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
     <style>
-        /* 变量定义 */
+        /* ============ Material Design 3 色调系统（种子色 #0078ff） ============ */
         :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --bg-color: #ffffff;
-            --transition: all 0.3s ease;
-            --border-radius: 15px;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --gradient-bg: linear-gradient(145deg, #f8f9fa, #ffffff);
+            --md-primary: #0078ff;
+            --md-on-primary: #ffffff;
+            --md-primary-container: #d8e3ff;
+            --md-on-primary-container: #001b3f;
+            --md-secondary: #535f70;
+            --md-on-secondary: #ffffff;
+            --md-secondary-container: #d7e3f8;
+            --md-on-secondary-container: #101c2b;
+            --md-tertiary: #6b5778;
+            --md-on-tertiary: #ffffff;
+            --md-tertiary-container: #f2daff;
+            --md-on-tertiary-container: #251431;
+
+            --md-surface: #f9f9ff;
+            --md-on-surface: #1a1c1e;
+            --md-surface-variant: #e0e2ec;
+            --md-on-surface-variant: #44474e;
+            --md-surface-container-lowest: #ffffff;
+            --md-surface-container-low: #f3f3f7;
+            --md-surface-container: #ededf1;
+            --md-surface-container-high: #e8e8ec;
+            --md-surface-container-highest: #e2e2e6;
+            --md-outline: #74777f;
+            --md-outline-variant: #c4c6d0;
+
+            --md-shadow-1: 0 1px 2px rgba(0,0,0,0.30), 0 1px 3px 1px rgba(0,0,0,0.15);
+            --md-shadow-2: 0 1px 2px rgba(0,0,0,0.30), 0 2px 6px 2px rgba(0,0,0,0.15);
+            --md-shadow-3: 0 1px 3px rgba(0,0,0,0.30), 0 4px 8px 3px rgba(0,0,0,0.15);
+
+            --md-radius-sm: 8px;
+            --md-radius-md: 12px;
+            --md-radius-lg: 16px;
+            --md-radius-xl: 28px;
+            --md-radius-full: 999px;
+
+            --md-ease: cubic-bezier(0.2, 0, 0, 1);
         }
 
-        /* 基础样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ============ 深色模式 ============ */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --md-primary: #aac7ff;
+                --md-on-primary: #002e6b;
+                --md-primary-container: #004494;
+                --md-on-primary-container: #d8e3ff;
+                --md-secondary: #bbc7db;
+                --md-on-secondary: #253140;
+                --md-secondary-container: #3b4857;
+                --md-on-secondary-container: #d7e3f8;
+                --md-tertiary: #d6bde4;
+                --md-on-tertiary: #3b2948;
+                --md-tertiary-container: #533f60;
+                --md-on-tertiary-container: #f2daff;
+
+                --md-surface: #1a1c1e;
+                --md-on-surface: #e2e2e6;
+                --md-surface-variant: #44474e;
+                --md-on-surface-variant: #c4c6d0;
+                --md-surface-container-lowest: #0f1113;
+                --md-surface-container-low: #1a1c1e;
+                --md-surface-container: #1e2022;
+                --md-surface-container-high: #282a2d;
+                --md-surface-container-highest: #333538;
+                --md-outline: #8e9199;
+                --md-outline-variant: #44474e;
+
+                --md-shadow-1: 0 1px 2px rgba(0,0,0,0.50), 0 1px 3px 1px rgba(0,0,0,0.35);
+                --md-shadow-2: 0 1px 2px rgba(0,0,0,0.50), 0 2px 6px 2px rgba(0,0,0,0.35);
+                --md-shadow-3: 0 1px 3px rgba(0,0,0,0.50), 0 4px 8px 3px rgba(0,0,0,0.35);
+            }
         }
 
+        /* ============ 基础 ============ */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            margin: 0;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--md-surface);
+            color: var(--md-on-surface);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.3s var(--md-ease), color 0.3s var(--md-ease);
         }
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
 
         .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 2em;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        /* 头部样式 */
-        .header {
-            position: relative;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid rgba(234, 234, 234, 0.5);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        /* ============ 顶部应用栏 ============ */
+        .app-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--md-surface);
+            background: color-mix(in srgb, var(--md-surface) 86%, transparent);
+            backdrop-filter: blur(14px) saturate(1.4);
+            border-bottom: 1px solid var(--md-outline-variant);
         }
-
-        .header .container {
+        .app-bar-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 10px 24px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1.5em 2em;
+            justify-content: space-between;
+            gap: 16px;
         }
-
-        .logo {
-            font-size: 1.8em;
-            color: var(--primary-color);
-            transition: var(--transition);
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.25rem;
+            letter-spacing: 0.2px;
+            border-radius: var(--md-radius-full);
+            padding: 4px 8px 4px 4px;
+            transition: background 0.2s var(--md-ease);
         }
-
-        .logo:hover {
-            transform: scale(1.05);
+        .brand:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, transparent); }
+        .brand-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--md-shadow-1);
         }
-
         .nav {
             display: flex;
             align-items: center;
-            gap: 2em;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
-
-        .nav-buttons {
-            display: flex;
-            gap: 2em;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            padding: 0.5em 1em;
-            border-radius: 20px;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .nav-options {
-            display: flex;
-            gap: 2em;
-        }
-
-        .separator {
-            color: #ccc;
-            margin: 0 0.5em;
-        }
-
-        /* 主要内容样式 */
-        .main {
-            margin-top: 3em;
-        }
-
-        /* 介绍部分 */
-        .intro {
-            display: flex;
-            justify-content: space-between;
+        .nav-pill {
+            display: inline-flex;
             align-items: center;
-            margin-bottom: 4em;
-            gap: 3em;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .about-me {
-            flex: 1;
-        }
-
-        .greeting, .name {
-            font-size: 2.5em;
-            color: var(--secondary-color);
-            margin-bottom: 0.5em;
-            transition: var(--transition);
-        }
-
-        .greeting:hover, .name:hover {
-            color: var(--primary-color);
-        }
-
-        .welcome {
-            font-size: 1.3em;
-            color: #555;
-            line-height: 1.8;
-        }
-
-        .profile-picture {
-            flex: 1;
-            text-align: right;
-        }
-
-        .profile-img {
-            max-width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .profile-img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .profile-description {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 1em;
-            font-style: italic;
-        }
-
-        /* 音乐部分 */
-        .music-section {
-            text-align: center;
-            padding: 2em;
-            margin: 4em auto;
-            max-width: 1200px;
-        }
-
-        .section-title {
-            font-size: 2em;
-            color: var(--secondary-color);
-            margin-bottom: 1em;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .music-player iframe {
-            margin: 0 auto;
-            display: block;
-            width: 100%;
-            height: 900px;
-            border: none;
-        }
-
-        /* 联系方式部分 */
-        .contact {
-            margin-top: 4em;
-            padding: 3em;
-            background: var(--gradient-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            animation: fadeIn 1s ease-out;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1.5em;
-            margin-left: 20%;
-        }
-
-        .contact-item {
-            font-size: 1.2em;
-            line-height: 1.6;
-            transition: var(--transition);
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-            color: var(--primary-color);
-        }
-
-        .contact-label {
+            height: 40px;
+            padding: 0 16px;
+            border-radius: var(--md-radius-full);
+            font-size: 0.95rem;
             font-weight: 500;
-            margin-right: 0.5em;
+            color: var(--md-on-surface-variant);
+            transition: background 0.2s var(--md-ease), color 0.2s var(--md-ease);
+        }
+        .nav-pill:hover {
+            background: color-mix(in srgb, var(--md-on-surface) 8%, transparent);
+            color: var(--md-on-surface);
+        }
+        .nav-pill.active {
+            background: var(--md-primary-container);
+            color: var(--md-on-primary-container);
+            font-weight: 600;
+        }
+        .nav-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--md-outline-variant);
+            margin: 0 6px;
         }
 
-        .contact-link {
-            color: inherit;
-            text-decoration: none;
-            transition: var(--transition);
+        /* ============ Hero 开头 ============ */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(900px 480px at 12% -12%, var(--md-primary-container), transparent 60%),
+                radial-gradient(800px 420px at 95% 110%, var(--md-tertiary-container), transparent 55%),
+                var(--md-surface);
+        }
+        .hero .container {
+            padding: 88px 24px 96px;
+            text-align: center;
+        }
+        .hero-avatar {
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 24px;
+            box-shadow: var(--md-shadow-3);
+            border: 5px solid var(--md-surface-container-lowest);
+            transition: transform 0.3s var(--md-ease), box-shadow 0.3s var(--md-ease);
+        }
+        .hero-avatar:hover {
+            transform: scale(1.08);
+            box-shadow: var(--md-shadow-3);
+        }
+        .hero-title {
+            margin: 0;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            color: var(--md-on-surface);
+        }
+        .hero-sub {
+            margin: 16px auto 0;
+            max-width: 34em;
+            font-size: 1.15rem;
+            color: var(--md-on-surface-variant);
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 28px;
+            border-radius: var(--md-radius-full);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 32px;
+            cursor: pointer;
+            transition: box-shadow 0.2s var(--md-ease), background 0.2s var(--md-ease);
+        }
+        .btn-filled {
+            background: var(--md-primary);
+            color: var(--md-on-primary);
+            box-shadow: var(--md-shadow-1);
+        }
+        .btn-filled:hover {
+            box-shadow: var(--md-shadow-2);
+            background: color-mix(in srgb, var(--md-primary) 92%, var(--md-on-primary));
         }
 
-        .contact-link:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
+        /* ============ Section 通用 ============ */
+        .section { padding: 40px 0; }
+        .section-title {
+            margin: 0 0 24px;
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            color: var(--md-on-surface);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title::before {
+            content: '';
+            width: 6px;
+            height: 28px;
+            border-radius: 3px;
+            background: var(--md-primary);
         }
 
-        /* 页脚样式 */
+        /* ============ 兴趣卡片 ============ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .interest-card {
+            padding: 24px;
+            border-radius: var(--md-radius-lg);
+            background: var(--md-surface-container-low);
+            box-shadow: var(--md-shadow-1);
+            transition: transform 0.25s var(--md-ease), box-shadow 0.25s var(--md-ease);
+        }
+        .interest-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--md-shadow-2);
+        }
+        .interest-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--md-radius-md);
+            background: var(--md-primary-container);
+            color: var(--md-on-primary-container);
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+        .interest-title {
+            margin: 0 0 6px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+        .interest-desc {
+            margin: 0;
+            font-size: 0.88rem;
+            color: var(--md-on-surface-variant);
+        }
+
+        /* ============ 摄影 ============ */
+        .photo-showcase {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            align-items: center;
+        }
+        .photo-showcase figure {
+            margin: 0;
+            border-radius: var(--md-radius-xl);
+            overflow: hidden;
+            background: var(--md-surface-container-high);
+            box-shadow: var(--md-shadow-3);
+            transition: transform 0.35s var(--md-ease), box-shadow 0.35s var(--md-ease);
+        }
+        .photo-showcase figure:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.25), 0 12px 24px 4px rgba(0,0,0,0.12);
+        }
+        .photo-showcase figure img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+        .photo-showcase figcaption {
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            color: var(--md-on-surface-variant);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .photo-showcase figcaption::before {
+            content: '\f030';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--md-primary);
+        }
+        .photo-side h3 {
+            margin: 0 0 12px;
+            font-size: 1.35rem;
+            font-weight: 600;
+        }
+        .photo-side p {
+            margin: 0;
+            color: var(--md-on-surface-variant);
+        }
+
+        /* ============ 页脚（原样保留） ============ */
         .footer {
             background: #1a1a1a;
             color: #ffffff;
             padding: 3em 0 1em;
-            margin-top: 4em;
+            margin-top: 24px;
             position: relative;
         }
-
         .footer::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, #333, transparent);
         }
-
         .footer-content {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -273,722 +373,142 @@
             margin: 0 auto 2em;
             padding: 0 2em;
         }
-
-        .footer-section {
-            padding: 0;
-            margin-bottom: 1em;
-        }
-
-        .footer-logo {
-            text-align: left;
-            margin-bottom: 1.5em;
-        }
-
-        .logo-img {
-            height: 60px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-
-        .logo-img:hover {
-            transform: scale(1.05);
-        }
-
-        .footer-description {
-            color: #999;
-            font-size: 0.9em;
-            margin-top: 0.5em;
-            line-height: 1.4;
-        }
-
-        .footer-title {
-            color: #ffffff;
-            margin-bottom: 1em;
-            font-size: 1.1em;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-
+        .footer-section { padding: 0; margin-bottom: 1em; }
+        .footer-logo { text-align: left; margin-bottom: 1.5em; }
+        .logo-img { height: 60px; border-radius: 8px; transition: transform 0.3s var(--md-ease); }
+        .logo-img:hover { transform: scale(1.05); }
+        .footer-description { color: #999; font-size: 0.9em; margin-top: 0.5em; line-height: 1.4; }
+        .footer-title { color: #ffffff; margin-bottom: 1em; font-size: 1.1em; font-weight: 600; position: relative; display: inline-block; }
         .footer-title::after {
             content: '';
             position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 20px;
-            height: 2px;
-            background: #0070f3;
+            bottom: -4px; left: 0;
+            width: 20px; height: 2px;
+            background: #0078ff;
             border-radius: 1px;
         }
-
-        .subtitle {
-            font-weight: normal;
-            font-size: 0.8em;
-            color: #999;
-            margin-top: 0.2em;
-            display: block;
-        }
-
-        .link-list {
-            list-style: none;
-            margin-top: 1em;
-        }
-
+        .subtitle { font-weight: normal; font-size: 0.8em; color: #999; margin-top: 0.2em; display: block; }
+        .link-list { list-style: none; margin-top: 1em; padding: 0; }
         .footer-link {
-            color: #ccc;
-            text-decoration: none;
-            transition: var(--transition);
-            display: block;
-            margin-bottom: 0.6em;
-            padding: 0.2em 0;
-            font-size: 0.9em;
+            color: #ccc; text-decoration: none;
+            transition: color 0.3s var(--md-ease), transform 0.3s var(--md-ease);
+            display: block; margin-bottom: 0.6em; padding: 0.2em 0; font-size: 0.9em;
         }
-
-        .footer-link:hover {
-            color: #0070f3;
-            transform: translateX(3px);
-        }
-
-        .footer-text {
-            color: #ccc;
-            font-size: 0.9em;
-            display: block;
-            margin-bottom: 0.6em;
-            padding: 0.2em 0;
-        }
-
+        .footer-link:hover { color: #0078ff; transform: translateX(3px); }
+        .footer-text { color: #ccc; font-size: 0.9em; display: block; margin-bottom: 0.6em; padding: 0.2em 0; }
         .footer-bottom {
             text-align: center;
             padding-top: 1.5em;
             border-top: 1px solid #333;
             margin-top: 1.5em;
             max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 2em;
-            padding-right: 2em;
+            margin-left: auto; margin-right: auto;
+            padding-left: 2em; padding-right: 2em;
         }
-
-        .copyright {
-            font-size: 0.85em;
-            color: #999;
-            margin-bottom: 1em;
-        }
-
+        .copyright { font-size: 0.85em; color: #999; margin-bottom: 1em; }
         .legal-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5em;
-            margin-bottom: 1em;
-            flex-wrap: wrap;
+            display: flex; justify-content: center; align-items: center;
+            gap: 1.5em; margin-bottom: 1em; flex-wrap: wrap;
         }
-
-        .legal-link {
-            color: #999;
-            text-decoration: none;
-            font-size: 0.85em;
-            transition: var(--transition);
-        }
-
-        .legal-link:hover {
-            color: #0070f3;
-        }
-
-        .separator {
-            color: #333;
-        }
-
-        .beian-links {
-            margin-top: 1em;
-        }
-
+        .legal-link { color: #999; text-decoration: none; font-size: 0.85em; transition: color 0.3s var(--md-ease); }
+        .legal-link:hover { color: #0078ff; }
+        .separator { color: #333; }
+        .beian-links { margin-top: 1em; }
         .beian {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5em;
-            font-size: 0.85em;
-            color: #999;
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.5em; font-size: 0.85em; color: #999; margin: 0;
         }
+        .beian-icon { width: 16px; height: 16px; }
+        .beian a { color: #999; text-decoration: none; transition: color 0.3s var(--md-ease); }
+        .beian a:hover { color: #0078ff; }
 
-        .beian-icon {
-            width: 16px;
-            height: 16px;
+        /* ============ 响应式 ============ */
+        @media (max-width: 860px) {
+            .photo-showcase { grid-template-columns: 1fr; }
+            .photo-side { order: -1; }
         }
-
-        .beian a {
-            color: #999;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .beian a:hover {
-            color: #0070f3;
-        }
-        
-
-        .legal-link:hover {
-            color: var(--primary-color);
-            background-color: rgba(74, 144, 226, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .beian-links {
-            display: flex;
-            justify-content: center;
-            gap: 2em;
-            flex-wrap: wrap;
-        }
-
-        .beian {
-            font-size: 0.9em;
-            color: #666;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-        }
-
-        .beian:hover {
-            color: var(--primary-color);
-        }
-
-        .beian a {
-            color: inherit;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .beian a:hover {
-            color: var(--primary-color);
-        }
-
-        .beian-icon {
-            width: 16px;
-            height: 16px;
-            vertical-align: middle;
-            transition: var(--transition);
-        }
-
-        .beian:hover .beian-icon {
-            transform: scale(1.1);
-        }
-
-        /* 翻译提示样式 */
-        .translation-note {
-            font-size: 0.9em;
-            color: #666;
-            font-style: italic;
-            margin-top: 0.5em;
-            opacity: 0.8;
-        }
-
-        /* 动画 */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5em 1em;
-            }
-
-            .header .container {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1.2em 1em;
-                gap: 1em;
-            }
-
-            .logo {
-                font-size: 1.6em;
-                margin-bottom: 0.5em;
-            }
-
-            .nav {
-                flex-direction: column;
-                width: 100%;
-                gap: 1.5em;
-            }
-
-            .nav-buttons {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.8em;
-            }
-
-            .nav-link {
-                width: 100%;
-                text-align: center;
-                padding: 0.8em 1em;
-                border-radius: 12px;
-                font-size: 1em;
-                background: rgba(74, 144, 226, 0.05);
-                border: 1px solid rgba(74, 144, 226, 0.1);
-            }
-
-            .nav-link:hover {
-                background-color: var(--primary-color);
-                color: white;
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
-            }
-
-            .nav-options {
-                flex-direction: row;
-                width: 100%;
-                justify-content: center;
-                gap: 1em;
-            }
-
-            .language-switcher {
-                display: flex;
-                align-items: center;
-                gap: 0.5em;
-            }
-
-            .separator {
-                color: #ccc;
-                margin: 0 0.3em;
-            }
-
-            .main {
-                margin-top: 2em;
-            }
-
-            .intro {
-                flex-direction: column;
-                text-align: center;
-                gap: 2em;
-                margin-bottom: 3em;
-            }
-
-            .about-me {
-                order: 1;
-            }
-
-            .profile-picture {
-                order: 2;
-                text-align: center;
-            }
-
-            .greeting, .name {
-                font-size: 2em;
-                margin-bottom: 0.4em;
-            }
-
-            .welcome {
-                font-size: 1.2em;
-                line-height: 1.6;
-            }
-            
-            .translation-note {
-                font-size: 0.85em;
-                margin-top: 0.4em;
-            }
-
-            .profile-img {
-                max-width: 90%;
-                border-radius: 16px;
-            }
-
-            .profile-description {
-                font-size: 0.95em;
-                margin-top: 1.2em;
-            }
-
-            .contact-details {
-                margin-left: 0;
-                align-items: center;
-                text-align: center;
-                gap: 1.2em;
-            }
-
-            .contact-item {
-                font-size: 1.1em;
-                padding: 0.8em 1.2em;
-                background: rgba(255, 255, 255, 0.8);
-                border-radius: 12px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-                transition: var(--transition);
-            }
-
-            .contact-item:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-                background: rgba(255, 255, 255, 0.95);
-            }
-
-            .music-section {
-                padding: 1.5em 1em;
-                margin: 2.5em auto;
-            }
-
-            .section-title {
-                font-size: 1.8em;
-                margin-bottom: 1em;
-            }
-
-            .music-player iframe {
-                height: 80vw;
-                max-height: 400px;
-                border-radius: 12px;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            }
-
-            .contact {
-                margin-top: 3em;
-                padding: 2em 1.5em;
-                border-radius: 16px;
-            }
-
-            .footer {
-                padding: 2.5em 0 1em 0;
-                margin-top: 2.5em;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.5em;
-                text-align: center;
-                padding: 0 1.2em;
-            }
-
-            .footer-section {
-                padding: 0;
-                margin-bottom: 0.8em;
-                min-width: auto;
-            }
-
-            .footer-title {
-                font-size: 1.1em;
-                margin-bottom: 0.8em;
-                position: relative;
-                color: #ffffff;
-            }
-
-            .footer-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-                width: 20px;
-                height: 2px;
-                background: #0070f3;
-                border-radius: 1px;
-            }
-
-            .logo-img {
-                height: 60px;
-                margin-bottom: 0.5em;
-                transition: transform 0.2s ease;
-            }
-            
-            .logo-img:hover {
-                transform: scale(1.02);
-            }
-
-            .link-list {
-                margin-top: 0.8em;
-            }
-
-            .footer-link {
-                padding: 0.4em 0;
-                margin-bottom: 0.4em;
-                font-size: 0.9em;
-                color: #ccc;
-            }
-
-            .footer-link:hover {
-                color: #0070f3;
-                transform: none;
-            }
-
-            .footer-bottom {
-                padding-top: 1.2em;
-                margin-top: 1.2em;
-                border-top: 1px solid #333;
-            }
-
-            .copyright {
-                font-size: 0.85em;
-                margin-bottom: 1em;
-                color: #999;
-            }
-
-            .legal-links {
-                flex-direction: column;
-                gap: 0.6em;
-                margin-bottom: 1em;
-            }
-
-            .legal-link {
-                font-size: 0.85em;
-                color: #999;
-            }
-            
-            .legal-link:hover {
-                color: #0070f3;
-            }
-            
-            .beian-links {
-                flex-direction: column;
-                gap: 0.8em;
-            }
-
-            .beian {
-                font-size: 0.85em;
-                justify-content: center;
-                color: #999;
-            }
-            
-            .beian a {
-                color: #999;
-            }
-            
-            .beian a:hover {
-                color: #0070f3;
-            }
-
-            .footer-description {
-                font-size: 0.85em;
-                margin-top: 0.3em;
-                text-align: center;
-            }
-
-            .footer-text {
-                font-size: 0.85em;
-                text-align: center;
-            }
-        }
-
-        /* 超小屏幕优化 */
-        @media (max-width: 480px) {
-            .container {
-                padding: 1.2em 0.8em;
-            }
-
-            .header .container {
-                padding: 1em 0.8em;
-            }
-
-            .logo {
-                font-size: 1.5em;
-            }
-
-            .nav-link {
-                padding: 0.7em 0.8em;
-                font-size: 0.95em;
-            }
-
-            .greeting, .name {
-                font-size: 1.8em;
-            }
-
-            .welcome {
-                font-size: 1.1em;
-            }
-            
-            .translation-note {
-                font-size: 0.8em;
-                margin-top: 0.3em;
-            }
-
-            .profile-img {
-                max-width: 95%;
-            }
-
-            .section-title {
-                font-size: 1.6em;
-            }
-
-            .music-player iframe {
-                height: 85vw;
-                max-height: 350px;
-            }
-
-            .contact {
-                padding: 1.5em 1em;
-            }
-
-            .contact-item {
-                font-size: 1em;
-                padding: 0.7em 1em;
-            }
-
-            .footer {
-                padding: 2em 0 1em 0;
-                margin-top: 2em;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1.2em;
-                padding: 0 1em;
-            }
-
-            .logo-img {
-                height: 50px;
-            }
-
-            .footer-title {
-                font-size: 1em;
-                margin-bottom: 0.6em;
-                color: #ffffff;
-            }
-
-            .footer-link {
-                font-size: 0.85em;
-                padding: 0.3em 0;
-                margin-bottom: 0.3em;
-                color: #ccc;
-            }
-
-            .footer-bottom {
-                padding-top: 1em;
-                margin-top: 1em;
-                border-top: 1px solid #333;
-            }
-
-            .copyright {
-                font-size: 0.85em;
-                margin-bottom: 0.8em;
-            }
-
-            .legal-link {
-                font-size: 0.8em;
-                padding: 0.3em 0.6em;
-            }
-            
-            .beian {
-                font-size: 0.85em;
-            }
-        }
-
-        /* 横屏模式优化 */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .header .container {
-                flex-direction: row;
-                align-items: center;
-                padding: 1em 1.5em;
-            }
-
-            .nav {
-                flex-direction: row;
-                gap: 1em;
-            }
-
-            .nav-buttons {
-                flex-direction: row;
-                gap: 0.5em;
-                flex-wrap: wrap;
-            }
-
-            .nav-link {
-                width: auto;
-                padding: 0.5em 0.8em;
-                font-size: 0.9em;
-            }
-
-            .intro {
-                flex-direction: row;
-                text-align: left;
-                gap: 2em;
-            }
-
-            .about-me {
-                order: 1;
-                flex: 1;
-            }
-
-            .profile-picture {
-                order: 2;
-                flex: 1;
-                text-align: right;
-            }
-
-            .greeting, .name {
-                font-size: 1.8em;
-            }
-
-            .welcome {
-                font-size: 1.1em;
-            }
-
-            .profile-img {
-                max-width: 80%;
-            }
+        @media (max-width: 600px) {
+            .app-bar-inner { flex-direction: column; align-items: stretch; gap: 8px; }
+            .nav { justify-content: center; }
+            .nav-pill { height: 36px; padding: 0 12px; font-size: 0.85rem; }
+            .hero .container { padding: 56px 24px 64px; }
+            .section { padding: 32px 0; }
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 1.5em; }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="logo">Anson</h1>
+    <header class="app-bar">
+        <div class="app-bar-inner">
+            <a class="brand" href="/hp/en">
+                <img src="/src/tx.webp" alt="Avatar" class="brand-avatar">
+                <span>Anson</span>
+            </a>
             <nav class="nav">
-                <div class="nav-buttons">
-                    <a href="https://blog.ansonq.com" class="nav-link">Blog</a>
-                    <a href="https://bg4jhp.com/en" class="nav-link">BG4JHP</a>
-                    <a href="https://status.ansonq.com" class="nav-link">WebStatus</a>
-                    <a href="https://gd.anson.fun/" class="nav-link">Tickets</a>
-                    <a href="/links/en" class="nav-link">Links</a>
-                </div>
-                <div class="nav-options">
-                    <div class="language-switcher">
-                        <a href="/hp" class="nav-link">中文</a>
-                        <span class="separator">|</span>
-                        <a href="" class="nav-link">English</a>
-                    </div>
-
-                </div>
+                <a href="#about" class="nav-pill">About</a>
+                <a href="#photos" class="nav-pill">Photos</a>
+                <a href="https://blog.ansonq.com" class="nav-pill">Blog</a>
+                <a href="/links/en" class="nav-pill">Links</a>
+                <span class="nav-divider"></span>
+                <a href="/hp" class="nav-pill">中文</a>
+                <a href="/hp/en" class="nav-pill active">EN</a>
             </nav>
         </div>
     </header>
 
-    <main class="main">
-        <div class="container">
-            <section class="intro" id="about">
-                <div class="about-me">
-                    <h2 class="greeting">Morning/Afternoon/Evening</h2>
-                    <h2 class="name">This is Anson</h2>
-                    <p class="welcome">Welcome to my website</p>
-                    <p class="translation-note">Translation issue? Tell me via bottom contact info</p>
-                </div>
-                <div class="profile-picture">
-                    <img src="/src/dali.jpg" alt="Photoed at Yunnan China in 2022" class="profile-img">
-                    <p class="profile-description">Photoed at Yunnan China in 2022</p>
-                </div>
-            </section>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <img src="/src/tx.webp" alt="Avatar" class="hero-avatar">
+                <h1 class="hero-title">Welcome to My Homepage</h1>
+                <p class="hero-sub">My interests and life, recorded here</p>
+                <a href="#about" class="btn btn-filled">Learn More <i class="fa-solid fa-arrow-down"></i></a>
+            </div>
+        </section>
 
-            <section class="music-section">
-                <h2 class="section-title">My Favorite Songs</h2>
-                <br>
-                <iframe allow="autoplay *; encrypted-media *;" 
-                    frameborder="0" 
-                    height="450" 
-                    style="width:100%;max-width:660px;overflow:hidden;background:transparent;" 
-                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-                    src="https://embed.music.apple.com/cn/playlist/favorite-songs/pl.u-EgUDj0K4gB">
-                </iframe>
-            </section>
-
-            <section class="contact" id="contact">
-                <h2 class="section-title">Contact</h2>
-                <div class="contact-details">
-                    <p class="contact-item">
-                        <span class="contact-label">Email:</span>
-                        <a href="mailto:i@ansonq.com" class="contact-value">i@ansonq.com</a>
-                    </p>
+        <section class="section" id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+                        <h3 class="interest-title">Amateur Radio</h3>
+                        <p class="interest-desc">Loving radio waves, connecting with the world.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fa-solid fa-camera"></i></div>
+                        <h3 class="interest-title">Photography</h3>
+                        <p class="interest-desc">Capturing moments of life and journeys with the lens.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fa-solid fa-code"></i></div>
+                        <h3 class="interest-title">Development</h3>
+                        <p class="interest-desc">Tinkering with websites and tools, turning ideas into reality.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                        <h3 class="interest-title">Writing</h3>
+                        <p class="interest-desc">Sharing thoughts, ideas and life on the blog.</p>
+                    </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <section class="section" id="photos">
+            <div class="container">
+                <h2 class="section-title">Photography</h2>
+                <div class="photo-showcase">
+                    <figure>
+                        <img src="/src/dali.webp" alt="Photoed at Yunnan China in 2022">
+                        <figcaption>Photoed at Yunnan China in 2022</figcaption>
+                    </figure>
+                    <div class="photo-side">
+                        <h3>Keeping the scenery with the lens</h3>
+                        <p>The occasional shutter hides the roads walked and the views seen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -996,7 +516,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="/src/tx.png" alt="Logo" class="logo-img">
+                        <img src="/src/tx.webp" alt="Logo" class="logo-img">
                         <p class="footer-description">
                             Share my thoughts, my ideas, my life
                         </p>

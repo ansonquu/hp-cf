@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/src/avay.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
     <title>My Social Media Links</title>
     <style>
         * {
@@ -17,7 +17,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             /* Background image settings - uncomment and modify path to use background image */
-            background-image: url('https://bing.ee123.net/img/');
+            background-image: url('/src/bg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -303,13 +303,14 @@
             }
         }
     </style>
+<link rel="stylesheet" href="/assets/dark.css">
 </head>
 <body>
     <div class="container">
         <a href="/socials" class="language-switch">中文</a>
         <div class="profile">
             <div class="avatar">
-                <img src="/src/tx.png" alt="Avatar" id="avatar-img">
+                <img src="/src/tx.webp" alt="Avatar" id="avatar-img">
             </div>
             <h1 class="name">Anson</h1>
             <p class="bio">Welcome to my social media links page! Here you can find my contact information on various platforms.</p>
@@ -431,7 +432,7 @@
                 title.textContent = 'WeChat QR Code';
                 desc.textContent = 'Scan QR code to add WeChat friend';
                 // Replace the image path below with your WeChat QR code image
-                qrCode.innerHTML = '<img src="/src/wx.jpg" alt="WeChat QR Code" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">';
+                qrCode.innerHTML = '<img src="/src/wx.webp" alt="WeChat QR Code" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">';
             }
             
             modal.style.display = 'block';
